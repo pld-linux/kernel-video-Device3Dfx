@@ -3,7 +3,7 @@
 # _without_dist_kernel - without distribution kernel
 
 %define		_orig_name	Device3Dfx
-%define		_rel 11
+%define		_rel 12
 
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
 Summary(pl):	Sterownik DRM do kart 3Dfx
