@@ -2,10 +2,8 @@
 # conditional build
 # _without_dist_kernel - without distribution kernel
 
-%define		_kernel_ver	%(grep UTS_RELEASE %{_kernelsrcdir}/include/linux/version.h 2>/dev/null | cut -d'"' -f2)
-%define		_kernel_ver_str	%(echo %{_kernel_ver} | sed s/-/_/g)
 %define		_orig_name	Device3Dfx
-%define		_rel 10
+%define		_rel 11
 
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
 Summary(pl):	Sterownik DRM do kart 3Dfx
@@ -21,7 +19,6 @@ Icon:		3dfx.gif
 PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
 Obsoletes:	%{_orig_name}
-Obsoletes:	kernel-smp-video-%{_orig_name}
 Exclusivearch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +40,6 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_smp}
-Obsoletes:	kernel-video-%{_orig_name}
 Obsoletes:	%{_orig_name}
 
 %description -n kernel-smp-video-%{_orig_name}
@@ -82,10 +78,10 @@ ln -sf /bin/true grep
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/video
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/video
-install 3dfx.o-smp $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/video/3dfx.o
-install 3dfx.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/video/3dfx.o
+install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc
+install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc
+install 3dfx.o-smp $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/3dfx.o
+install 3dfx.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/3dfx.o
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -104,8 +100,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}/video/*
+/lib/modules/%{_kernel_ver}/misc/*
 
 %files -n kernel-smp-video-%{_orig_name}
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}smp/video/*
+/lib/modules/%{_kernel_ver}smp/misc/*
