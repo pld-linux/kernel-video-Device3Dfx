@@ -4,8 +4,8 @@
 
 %define		_kernel_ver	%(grep UTS_RELEASE %{_kernelsrcdir}/include/linux/version.h 2>/dev/null | cut -d'"' -f2)
 %define		_kernel_ver_str	%(echo %{_kernel_ver} | sed s/-/_/g)
-%define		_rel 9
 %define		_orig_name	Device3Dfx
+%define		_rel 10
 
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
 Summary(pl):	Sterownik DRM do kart 3Dfx
@@ -19,7 +19,7 @@ Patch0:		%{_orig_name}-Makefile.patch
 Icon:		3dfx.gif
 %{!?_without_dist_kernel:BuildRequires:	kernel-headers < 2.4.0 }
 PreReq:		/sbin/depmod
-%{!?_without_dist_kernel:Requires:	kernel-up = %{_kernel_ver}}
+%{!?_without_dist_kernel:%requires_releq_kernel_up}
 Obsoletes:	%{_orig_name}
 Obsoletes:	kernel-smp-video-%{_orig_name}
 Exclusivearch:	%{ix86}
@@ -40,11 +40,11 @@ prawid³owo MTRR.
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels SMP
 Summary(pl):	Sterownik DRM do kart 3Dfx dla kerneli SMP
 Release:	%{_rel}@%{_kernel_ver_str}
-%{!?_without_dist_kernel:Requires:	kernel-smp = %{_kernel_ver}}
+Group:		Base/Kernel
+PreReq:		/sbin/depmod
+%{!?_without_dist_kernel:%requires_releq_kernel_smp}
 Obsoletes:	kernel-video-%{_orig_name}
 Obsoletes:	%{_orig_name}
-PreReq:		/sbin/depmod
-Group:		Base/Kernel
 
 %description -n kernel-smp-video-%{_orig_name}
 This package installs the 3Dfx device driver to allow access to 3Dfx
@@ -69,7 +69,7 @@ ln -sf /bin/true grep
 	CFLAGS="-DMODULE -D__KERNEL__ -D__KERNEL_SMP=1 %{rpmcflags} \
 	-fomit-frame-pointer -I%{_kernelsrcdir}/include \
 	-fno-strength-reduce -fno-strict-aliasing" )
-mv 3dfx.o 3dfx.o-smp
+mv -f 3dfx.o 3dfx.o-smp
 
 ( PATH=.:$PATH %{__make} clean )
 %{__cc} -I%{_kernelsrcdir}/include -o kinfo kinfo.c
