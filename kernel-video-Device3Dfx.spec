@@ -7,11 +7,12 @@ Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
 Summary(pl):	Sterownik DRM do kart 3Dfx
 Name:		kernel-video-%{_orig_name}
 Version:	2.3
-%define _rel	15
+%define _rel	16
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	GPL
 Group:		Base/Kernel
 Source0:	%{_orig_name}-%{version}.tar.gz
+# Source0-md5:	e6f16311addfec8aa7b42260c320de11
 Patch0:		%{_orig_name}-Makefile.patch
 Icon:		3dfx.gif
 %{!?_without_dist_kernel:BuildRequires:	kernel-headers < 2.4.0 }
