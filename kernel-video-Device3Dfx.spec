@@ -14,18 +14,6 @@ Version:	2.3
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	GPL
 Group:		Base/Kernel
-Group(cs):	Základ/Jádro
-Group(da):	Basal/Kerne
-Group(de):	Grundsätzlich/Kern
-Group(es):	Base/Núcleo
-Group(fr):	Base/Noyau
-Group(it):	Base/Kernel
-Group(ja):	¥Ù¡¼¥¹/¥«¡¼¥Í¥ë
-Group(no):	Basis/Kjerne
-Group(pl):	Podstawowe/J±dro
-Group(pt):	Base/Núcleo
-Group(ru):	âÁÚÏ×ÙÊ ÎÁÂÏÒ/ñÄÒÏ
-Group(sv):	Bas/Kärna
 Source0:	%{_orig_name}-%{version}.tar.gz
 Patch0:		%{_orig_name}-Makefile.patch
 Icon:		3dfx.gif
@@ -59,18 +47,6 @@ Obsoletes:	kernel-video-%{_orig_name}
 Obsoletes:	%{_orig_name}
 PreReq:		/sbin/depmod
 Group:		Base/Kernel
-Group(cs):	Základ/Jádro
-Group(da):	Basal/Kerne
-Group(de):	Grundsätzlich/Kern
-Group(es):	Base/Núcleo
-Group(fr):	Base/Noyau
-Group(it):	Base/Kernel
-Group(ja):	¥Ù¡¼¥¹/¥«¡¼¥Í¥ë
-Group(no):	Basis/Kjerne
-Group(pl):	Podstawowe/J±dro
-Group(pt):	Base/Núcleo
-Group(ru):	âÁÚÏ×ÙÊ ÎÁÂÏÒ/ñÄÒÏ
-Group(sv):	Bas/Kärna
 
 %description -n kernel-smp-video-%{_orig_name}
 This package installs the 3Dfx device driver to allow access to 3Dfx
