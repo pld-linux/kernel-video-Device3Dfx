@@ -1,4 +1,3 @@
-
 # conditional build
 # _without_dist_kernel - without distribution kernel
 
@@ -8,7 +7,7 @@ Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
 Summary(pl):	Sterownik DRM do kart 3Dfx
 Name:		kernel-video-%{_orig_name}
 Version:	2.3
-%define _rel	13
+%define _rel	14
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	GPL
 Group:		Base/Kernel
@@ -46,7 +45,6 @@ Obsoletes:	%{_orig_name}
 This package installs the 3Dfx device driver to allow access to 3Dfx
 boards without the user having root privledges. It should work on both
 2.0 and 2.1/2.2 SMP kernels and set the MTRR settings correctly.
-
 
 %description -n kernel-smp-video-%{_orig_name} -l pl
 Ten pakiet zawiera driver do kart 3Dfx pozwalaj±cy na udostêpnienie
