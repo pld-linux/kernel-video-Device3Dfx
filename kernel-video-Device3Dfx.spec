@@ -1,6 +1,7 @@
-# conditional build
+#
+# Conditional build:
 # _without_dist_kernel - without distribution kernel
-
+#
 %define		_orig_name	Device3Dfx
 
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
@@ -15,8 +16,8 @@ Source0:	%{_orig_name}-%{version}.tar.gz
 Patch0:		%{_orig_name}-Makefile.patch
 Icon:		3dfx.gif
 %{!?_without_dist_kernel:BuildRequires:	kernel-headers < 2.4.0 }
-PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
+Requires(post,postun):	/sbin/depmod
 Obsoletes:	%{_orig_name}
 Exclusivearch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -37,8 +38,8 @@ Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels SMP
 Summary(pl):	Sterownik DRM do kart 3Dfx dla kerneli SMP
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_smp}
+Requires(post,postun):	/sbin/depmod
 Obsoletes:	%{_orig_name}
 
 %description -n kernel-smp-video-%{_orig_name}
@@ -85,16 +86,16 @@ install 3dfx.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/3dfx.o
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/depmod -a
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver} %{_kernel_ver}
 
 %postun
-/sbin/depmod -a
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver} %{_kernel_ver}
 
-%post -n kernel-smp-video-%{_orig_name}
-/sbin/depmod -a
+%post	-n kernel-smp-video-%{_orig_name}
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver}smp %{_kernel_ver}smp
 
 %postun -n kernel-smp-video-%{_orig_name}
-/sbin/depmod -a
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver}smp %{_kernel_ver}smp
 
 %files
 %defattr(644,root,root,755)
