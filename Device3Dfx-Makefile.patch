@@ -1,0 +1,35 @@
+diff -ur Device3Dfx-2.3/Makefile Device3Dfx-2.3.new/Makefile
+--- Device3Dfx-2.3/Makefile	Sun Apr  9 01:31:38 2000
++++ Device3Dfx-2.3.new/Makefile	Fri Jun  2 15:38:02 2000
+@@ -85,29 +85,8 @@
+ ###############################################################################
+ 
+ install:
+-	mkdir -p /lib/modules/$(shell ./kinfo --UTS)/misc
+-	cp 3dfx.o /lib/modules/$(shell ./kinfo --UTS)/misc/3dfx.o
+-	@( \
+-	if [ -e /lib/modules/$(shell ./kinfo --UTS)/modules.dep ]; then \
+-		indep=`grep 'misc/3dfx.o:' /lib/modules/$(shell ./kinfo --UTS)/modules.dep`; \
+-		if [ -z "$$indep" ]; then \
+-			echo "/lib/modules/$(shell ./kinfo --UTS)/misc/3dfx.o:" >> /lib/modules/$(shell ./kinfo --UTS)/modules.dep; \
+-			echo "" >> /lib/modules/$(shell ./kinfo --UTS)/modules.dep; \
+-		fi; \
+-	fi; \
+-	if [ ! -c /dev/3dfx ]; then \
+-	        mknod /dev/3dfx c 107 0; \
+-		chmod go+w /dev/3dfx; \
+-	fi; \
+-	if [ "$(RPM_INSTALL)" = "1" ]; then \
+-		echo "/lib/modules/$(shell ./kinfo --UTS)/misc/3dfx.o"; \
+-	else \
+-		inconf=`grep 'alias char-major-107 3dfx' /etc/conf.modules`; \
+-		if [ -z "$$inconf" ]; then \
+-			echo "alias char-major-107 3dfx" >> /etc/conf.modules; \
+-		fi; \
+-	fi; \
+-	)
++	mkdir -p $(DESTDIR)/lib/modules/$(shell ./kinfo --UTS)/misc
++	cp 3dfx.o $(DESTDIR)/lib/modules/$(shell ./kinfo --UTS)/misc/3dfx.o
+ 
+ ###############################################################################
+ # This is for debugging purposes by the developers:
