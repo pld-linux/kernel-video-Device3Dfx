@@ -7,25 +7,35 @@
 %define		_rel 8
 %define         _orig_name	Device3Dfx
 
-Summary:        Device driver for 3Dfx boards for 2.[0-2] kernels
-Summary(pl):    Sterownik DRM do kart 3Dfx
+Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
+Summary(pl):	Sterownik DRM do kart 3Dfx
 Name:		kernel-video-%{_orig_name}
 Version:	2.3
 Release:	%{_rel}@%{_kernel_ver_str}
-License:        GPL
+License:	GPL
 Group:		Base/Kernel
+Group(cs):	Základ/Jádro
+Group(da):	Basal/Kerne
 Group(de):	Grundsätzlich/Kern
+Group(es):	Base/Núcleo
+Group(fr):	Base/Noyau
+Group(it):	Base/Kernel
+Group(ja):	¥Ù¡¼¥¹/¥«¡¼¥Í¥ë
+Group(no):	Basis/Kjerne
 Group(pl):	Podstawowe/J±dro
-Source0:        %{_orig_name}-%{version}.tar.gz
-Patch0:         %{_orig_name}-Makefile.patch
-Icon:           3dfx.gif
+Group(pt):	Base/Núcleo
+Group(ru):	âÁÚÏ×ÙÊ ÎÁÂÏÒ/ñÄÒÏ
+Group(sv):	Bas/Kärna
+Source0:	%{_orig_name}-%{version}.tar.gz
+Patch0:		%{_orig_name}-Makefile.patch
+Icon:		3dfx.gif
 %{!?_without_dist_kernel:BuildRequires:         kernel-headers < 2.4.0 }
 PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:Conflicts:	kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
 %{!?_without_dist_kernel:Conflicts:	kernel-smp}
-Obsoletes:      %{_orig_name}
+Obsoletes:	%{_orig_name}
 Obsoletes:	kernel-smp-video-%{_orig_name}
-Exclusivearch:  %{ix86}
+Exclusivearch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,17 +50,27 @@ karty bez dawania u¿ytkownikom praw roota. Powinien dzia³aæ z j±drami
 prawid³owo MTRR.
 
 %package -n kernel-smp-video-%{_orig_name}
-Summary:        Device driver for 3Dfx boards for 2.[0-2] kernels SMP
-Summary(pl):    Sterownik DRM do kart 3Dfx dla kerneli SMP
-Release:        %{_rel}@%{_kernel_ver_str}
+Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels SMP
+Summary(pl):	Sterownik DRM do kart 3Dfx dla kerneli SMP
+Release:	%{_rel}@%{_kernel_ver_str}
 %{!?_without_dist_kernel:Conflicts:     kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
 %{!?_without_dist_kernel:Conflicts:     kernel-up}
-Obsoletes: 	kernel-video-%{_orig_name}
+Obsoletes:	kernel-video-%{_orig_name}
 Obsoletes:	%{_orig_name}
-PreReq:         /sbin/depmod
+PreReq:		/sbin/depmod
 Group:		Base/Kernel
+Group(cs):	Základ/Jádro
+Group(da):	Basal/Kerne
 Group(de):	Grundsätzlich/Kern
+Group(es):	Base/Núcleo
+Group(fr):	Base/Noyau
+Group(it):	Base/Kernel
+Group(ja):	¥Ù¡¼¥¹/¥«¡¼¥Í¥ë
+Group(no):	Basis/Kjerne
 Group(pl):	Podstawowe/J±dro
+Group(pt):	Base/Núcleo
+Group(ru):	âÁÚÏ×ÙÊ ÎÁÂÏÒ/ñÄÒÏ
+Group(sv):	Bas/Kärna
 
 %description -n kernel-smp-video-%{_orig_name}
 This package installs the 3Dfx device driver to allow access to 3Dfx
