@@ -4,7 +4,7 @@
 
 %define		_kernel_ver	%(grep UTS_RELEASE %{_kernelsrcdir}/include/linux/version.h 2>/dev/null | cut -d'"' -f2)
 %define		_kernel_ver_str	%(echo %{_kernel_ver} | sed s/-/_/g)
-%define		_rel 8
+%define		_rel 9
 %define		_orig_name	Device3Dfx
 
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
@@ -19,8 +19,7 @@ Patch0:		%{_orig_name}-Makefile.patch
 Icon:		3dfx.gif
 %{!?_without_dist_kernel:BuildRequires:	kernel-headers < 2.4.0 }
 PreReq:		/sbin/depmod
-%{!?_without_dist_kernel:Conflicts:	kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
-%{!?_without_dist_kernel:Conflicts:	kernel-smp}
+%{!?_without_dist_kernel:Requires:	kernel-up = %{_kernel_ver}}
 Obsoletes:	%{_orig_name}
 Obsoletes:	kernel-smp-video-%{_orig_name}
 Exclusivearch:	%{ix86}
@@ -41,8 +40,7 @@ prawid³owo MTRR.
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels SMP
 Summary(pl):	Sterownik DRM do kart 3Dfx dla kerneli SMP
 Release:	%{_rel}@%{_kernel_ver_str}
-%{!?_without_dist_kernel:Conflicts:	kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
-%{!?_without_dist_kernel:Conflicts:	kernel-up}
+%{!?_without_dist_kernel:Requires:	kernel-smp = %{_kernel_ver}}
 Obsoletes:	kernel-video-%{_orig_name}
 Obsoletes:	%{_orig_name}
 PreReq:		/sbin/depmod
@@ -54,7 +52,7 @@ boards without the user having root privledges. It should work on both
 2.0 and 2.1/2.2 SMP kernels and set the MTRR settings correctly.
 
 
-%description kernel-smp-video-%{_orig_name} -l pl
+%description -n kernel-smp-video-%{_orig_name} -l pl
 Ten pakiet zawiera driver do kart 3Dfx pozwalaj±cy na udostêpnienie
 karty bez dawania u¿ytkownikom praw roota. Powinien dzia³aæ z j±drami
 2.0 oraz wieloprocesorowymi (SMP) 2.1/2.2 i ustawiaæ prawid³owo MTRR.
