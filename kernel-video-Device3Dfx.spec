@@ -3,12 +3,12 @@
 # _without_dist_kernel - without distribution kernel
 
 %define		_orig_name	Device3Dfx
-%define		_rel 12
 
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
 Summary(pl):	Sterownik DRM do kart 3Dfx
 Name:		kernel-video-%{_orig_name}
 Version:	2.3
+%define_rel	13
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	GPL
 Group:		Base/Kernel
@@ -78,8 +78,8 @@ ln -sf /bin/true grep
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc
+install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,msmp}/misc
+
 install 3dfx.o-smp $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/3dfx.o
 install 3dfx.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/3dfx.o
 
