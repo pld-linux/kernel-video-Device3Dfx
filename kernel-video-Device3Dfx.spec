@@ -15,7 +15,6 @@ Group:		Base/Kernel
 Source0:	%{_orig_name}-%{version}.tar.gz
 # Source0-md5:	e6f16311addfec8aa7b42260c320de11
 Patch0:		%{_orig_name}-Makefile.patch
-Icon:		3dfx.gif
 %{!?_without_dist_kernel:BuildRequires:	kernel-headers < 2.4.0 }
 BuildRequires:	rpmbuild(macros) >= 1.118
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
