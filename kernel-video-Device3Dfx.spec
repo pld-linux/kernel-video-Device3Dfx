@@ -55,7 +55,7 @@ karty bez dawania u¿ytkownikom praw roota. Powinien dzia³aæ z j±drami
 
 %prep
 %setup -c -q
-%patch -p1
+%patch0 -p1
 
 %build
 %{__cc} -I%{_kernelsrcdir}/include -D__KERNEL_SMP=1 -o kinfo kinfo.c
