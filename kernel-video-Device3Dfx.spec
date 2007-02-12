@@ -5,7 +5,7 @@
 %define		_orig_name	Device3Dfx
 
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
-Summary(pl):	Sterownik DRM do kart 3Dfx
+Summary(pl.UTF-8):   Sterownik DRM do kart 3Dfx
 Name:		kernel-video-%{_orig_name}
 Version:	2.3
 %define _rel	14
@@ -28,15 +28,15 @@ This package installs the 3Dfx device driver to allow access to 3Dfx
 boards without the user having root privledges. It should work on both
 2.0 and 2.1/2.2 kernels and set the MTRR settings correctly.
 
-%description -l pl
-Ten pakiet zawiera driver do kart 3Dfx pozwalaj±cy na udostêpnienie
-karty bez dawania u¿ytkownikom praw roota. Powinien dzia³aæ z j±drami
-2.0 oraz 2.1/2.2 (tak¿e z wieloprocesorowymi 2.1/2.2) i ustawiaæ
-prawid³owo MTRR.
+%description -l pl.UTF-8
+Ten pakiet zawiera driver do kart 3Dfx pozwalajÄ…cy na udostÄ™pnienie
+karty bez dawania uÅ¼ytkownikom praw roota. Powinien dziaÅ‚aÄ‡ z jÄ…drami
+2.0 oraz 2.1/2.2 (takÅ¼e z wieloprocesorowymi 2.1/2.2) i ustawiaÄ‡
+prawidÅ‚owo MTRR.
 
 %package -n kernel-smp-video-%{_orig_name}
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels SMP
-Summary(pl):	Sterownik DRM do kart 3Dfx dla kerneli SMP
+Summary(pl.UTF-8):   Sterownik DRM do kart 3Dfx dla kerneli SMP
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{!?_without_dist_kernel:%requires_releq_kernel_smp}
@@ -48,10 +48,10 @@ This package installs the 3Dfx device driver to allow access to 3Dfx
 boards without the user having root privledges. It should work on both
 2.0 and 2.1/2.2 SMP kernels and set the MTRR settings correctly.
 
-%description -n kernel-smp-video-%{_orig_name} -l pl
-Ten pakiet zawiera driver do kart 3Dfx pozwalaj±cy na udostêpnienie
-karty bez dawania u¿ytkownikom praw roota. Powinien dzia³aæ z j±drami
-2.0 oraz wieloprocesorowymi (SMP) 2.1/2.2 i ustawiaæ prawid³owo MTRR.
+%description -n kernel-smp-video-%{_orig_name} -l pl.UTF-8
+Ten pakiet zawiera driver do kart 3Dfx pozwalajÄ…cy na udostÄ™pnienie
+karty bez dawania uÅ¼ytkownikom praw roota. Powinien dziaÅ‚aÄ‡ z jÄ…drami
+2.0 oraz wieloprocesorowymi (SMP) 2.1/2.2 i ustawiaÄ‡ prawidÅ‚owo MTRR.
 
 %prep
 %setup -c -q
