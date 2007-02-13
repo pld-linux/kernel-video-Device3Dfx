@@ -5,7 +5,7 @@
 %define		_orig_name	Device3Dfx
 
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels
-Summary(pl.UTF-8):   Sterownik DRM do kart 3Dfx
+Summary(pl.UTF-8):	Sterownik DRM do kart 3Dfx
 Name:		kernel-video-%{_orig_name}
 Version:	2.3
 %define _rel	14
@@ -36,7 +36,7 @@ prawidłowo MTRR.
 
 %package -n kernel-smp-video-%{_orig_name}
 Summary:	Device driver for 3Dfx boards for 2.[0-2] kernels SMP
-Summary(pl.UTF-8):   Sterownik DRM do kart 3Dfx dla kerneli SMP
+Summary(pl.UTF-8):	Sterownik DRM do kart 3Dfx dla kerneli SMP
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{!?_without_dist_kernel:%requires_releq_kernel_smp}
