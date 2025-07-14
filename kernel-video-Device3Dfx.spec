@@ -55,7 +55,7 @@ karty bez dawania użytkownikom praw roota. Powinien działać z jądrami
 
 %prep
 %setup -c -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__cc} -I%{_kernelsrcdir}/include -D__KERNEL_SMP=1 -o kinfo kinfo.c
